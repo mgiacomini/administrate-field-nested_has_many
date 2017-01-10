@@ -7,7 +7,7 @@ require "cocoon"
 module Administrate
   module Field
     class NestedHasMany < Administrate::Field::HasMany
-      VERSION = "0.2.3"
+      VERSION = "0.2.4"
 
       class Engine < ::Rails::Engine
         Administrate::Engine.add_javascript "administrate-field-nested_has_many/application"
