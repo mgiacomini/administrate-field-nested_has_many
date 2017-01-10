@@ -1,4 +1,4 @@
-require "lib/administrate/field/nested_has_many"
+require_relative "lib/administrate/field/nested_has_many"
 
 Gem::Specification.new do |gem|
   gem.name = "administrate-field-nested_has_many"
