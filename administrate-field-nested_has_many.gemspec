@@ -1,4 +1,6 @@
-$:.push File.expand_path("../lib", __FILE__)
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
 require "administrate/field/nested_has_many"
 
 Gem::Specification.new do |gem|
@@ -11,11 +13,17 @@ Gem::Specification.new do |gem|
   gem.description = gem.summary
   gem.license = "MIT"
 
-  gem.require_paths = ["lib"]
-  gem.files = `git ls-files`.split("\n")
+  gem.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  gem.bindir = 'bin'
+  gem.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  gem.require_paths = ['lib']
   gem.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
 
-  gem.add_dependency "administrate"
-  gem.add_dependency "cocoon", "~> 1.2"
-  gem.add_dependency "rails"
+  gem.add_runtime_dependency "administrate"
+  gem.add_runtime_dependency "cocoon", "~> 1.2"
+  gem.add_runtime_dependency "rails"
+
+  gem.add_development_dependency 'bundler', '~> 1.12'
+  gem.add_development_dependency 'rake', '~> 10.0'
+  gem.add_development_dependency 'rspec', '~> 3.4', '>= 3.4.0'
 end
