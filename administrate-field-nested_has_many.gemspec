@@ -1,8 +1,6 @@
-require_relative "lib/administrate/field/nested_has_many"
-
 Gem::Specification.new do |gem|
   gem.name = "administrate-field-nested_has_many"
-  gem.version = Administrate::Field::NestedHasMany::VERSION
+  gem.version = '0.2.8'
   gem.authors = ["Mauricio Giacomini Girardello"]
   gem.email = ["mauriciogiacomini4@gmail.com"]
   gem.homepage = "https://github.com/mgiacomini/administrate-field-nested_has_many"
